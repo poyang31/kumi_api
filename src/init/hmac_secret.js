@@ -15,9 +15,9 @@ const generateCommand = process.env.RUNTIME_ENV === "container" ?
     "npm run new-secret";
 
 // Check if "secret.key" exists
-let jwtSecret;
+let hmacSecret;
 try {
-    jwtSecret = fs.readFileSync(constant.SECRET_FILENAME).toString();
+    hmacSecret = fs.readFileSync(constant.SECRET_FILENAME).toString();
 } catch (e) {
     if (e.code !== "ENOENT") {
         throw e;
@@ -29,12 +29,12 @@ try {
 }
 
 // Check length
-if (jwtSecret.length < 2048) {
+if (hmacSecret.length < 2048) {
     throw new Error(`
         JWT secret is NOT SAFE,
         please generate one with "${generateCommand}"
     `);
 }
 
-// Export jwtSecret (string)
-module.exports = jwtSecret;
+// Export hmacSecret (string)
+module.exports = hmacSecret;

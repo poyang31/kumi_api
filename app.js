@@ -21,7 +21,7 @@ const {StatusCodes} = require("http-status-codes");
 const ctx = {
     cache: require("./src/init/cache"),
     database: require("./src/init/database"),
-    jwt_secret: require("./src/init/jwt_secret"),
+    hmac_secret: require("./src/init/hmac_secret"),
 };
 
 // Initialize application

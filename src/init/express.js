@@ -14,7 +14,7 @@ module.exports = (ctx) => {
     app.use(require("../middleware/auth")(ctx));
 
     // Request body parser
-    app.use(express.urlencoded({extended: true}));
+    app.use(express.json());
 
     // Optional middleware
     if (process.env.IS_PUBLIC !== "yes") {

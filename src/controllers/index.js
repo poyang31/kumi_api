@@ -2,7 +2,8 @@
 
 // Routes
 const routes = [
-    require("./example"),
+    require("./auth"),
+    require("./sync"),
 ];
 
 // Load routes
