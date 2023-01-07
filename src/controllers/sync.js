@@ -15,7 +15,7 @@ module.exports = (ctx, r) => {
     // Get sync data
     router.get("/data", async (req, res) => {
         const SyncData = ctx.database.model("SyncData", schemaSyncData);
-        const syncData = await SyncData.findOne({author: req.uuid}).exec();
+        const syncData = await SyncData.findOne({_id: req.uuid}).exec();
         if (!syncData) {
             res.sendStatus(StatusCodes.NOT_FOUND);
             return;

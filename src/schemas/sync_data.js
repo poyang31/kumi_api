@@ -9,4 +9,6 @@ module.exports = new Schema({
     content: String,
     created_at: Number,
     updated_at: Number,
+}, {
+    timestamps: true,
 });
