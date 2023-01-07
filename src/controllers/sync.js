@@ -35,14 +35,13 @@ module.exports = (ctx, r) => {
         const syncData = {content};
 
         const status = await SyncData.findByIdAndUpdate(
-            req.uuid, syncData, {upsert: true},
-        );
+            req.uuid, syncData, {
+                upsert: true,
+                new: true,
+            },
+        ).exec();
 
-        res.sendStatus(
-            status ?
-                StatusCodes.OK :
-                StatusCodes.INTERNAL_SERVER_ERROR,
-        );
+        res.send(status);
     });
 
     // Mount router
