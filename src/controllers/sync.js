@@ -32,7 +32,7 @@ module.exports = (ctx, r) => {
         }
 
         const SyncData = ctx.database.model("SyncData", schemaSyncData);
-        const syncData = new SyncData({author: req.uuid, content});
+        const syncData = new SyncData({_id: req.uuid, content});
 
         const status = await syncData.save();
 
