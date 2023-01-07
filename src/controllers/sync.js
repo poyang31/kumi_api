@@ -32,9 +32,11 @@ module.exports = (ctx, r) => {
         }
 
         const SyncData = ctx.database.model("SyncData", schemaSyncData);
-        const syncData = new SyncData({_id: req.uuid, content});
+        const syncData = {_id: req.uuid, content};
 
-        const status = await syncData.save();
+        const status = await SyncData.findOneAndUpdate(
+            req.uuid, syncData, {upsert: true},
+        );
 
         res.sendStatus(
             status ?
